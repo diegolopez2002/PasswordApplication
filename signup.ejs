@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Signup Page</title>
+        <script src="passwordServer.js"></script>
+        <link rel="stylesheet" href="password.css">
+    </head>
+    <body>
+        <h2 class="header">Sign up</h2>
+
+        <form method="post" action="/userinfo">
+            <fieldset>
+                <legend>Make an Account</legend>
+                Name: <input type="text" id="name" name="name" required> <br>
+                <hr>
+                Email: <input type="email" id="email" name="email" required> <br>
+            </fieldset>
+            <fieldset>
+                <legend>Enter Info</legend>
+                Username: <input type="text" id="usernameSignup" name="usernameSignup" required> <br>
+                Account Password: <input type="text" id="usernamePassword" name="usernamePassword" required> <br>
+                <label for="phone">Enter your phone number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="123-456-7890">
+            </fieldset>
+            <input type="submit" value="Submit" id="userinfo">
+            <input type="reset" value="Reset">
+        </form>
+        
+
+    </body>
+</html>
+

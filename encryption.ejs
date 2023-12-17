@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Password Encrypted</title>
+        <link rel="stylesheet" href="password.css">
+        <script src="passwordServer.js"></script>
+    </head>
+    <body>
+
+        <h2>Password Protection</h2>
+        <p>You ahve succesfulyl encyrpted your password</p>
+        <p>Original Password: <%= password %> </p>
+        <p>Encrypted Password <%= newpassword %> </p>
+        <p>Click here to go back to the <a href="/">home page</a></p>
+
+        <form method="get" action="/displayTable">
+            <fieldset>
+                Do you want to see your passwords?
+                <input type="submit" id="displayTable" name="displayTable" value="displayTable">
+            </fieldset>
+        </form>
+        
+        <button onclick="goBack()">Go Back</button>
+
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+        
+
+        
+    </body>
+
+</html>
+
+

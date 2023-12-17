@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Password Protector and Hasher</title>
+        <link rel="stylesheet" href="password.css">
+        <script src="passwordServer.js"></script>
+        <style>
+            .centertext {
+                color: blue;
+        }
+
+            .border{
+                border-color: darkturquoise;
+                border-style: double;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="centertext">Password Protection Page</h2>
+        <div>
+            <h3>Password Encryption Application</h3>
+            <form method="post" action="/login">
+                <fieldset class="border">
+                    <legend class="login">Login</legend>
+                    <p class="logintext">Account Username: <input type="text" id="username" placeholder="username" class="transparent-input" name="username" required></p>
+                    <p class="logintext">Account Password: <input type="text" id="password" placeholder="password" class="transparent-input" name="password" required></p>
+                    <p>Login</p>
+                    <input type="submit" value="Login" id="login">
+                </fieldset>
+                <fieldset class="border">
+                    <legend>Sign up?</legend>
+                    <p>If you don't already have an account click the link below</p>
+                    <a href="signup.ejs">SIGN UP</a>
+                </fieldset>  
+            </form>
+
+        </div>
+        <script>
+            function validateForm() {
+                var username = document.forms[0]["username"].value;
+                var password = document.forms[0]["password"].value;
+                if (username === "" || password === "") {
+                    alert("Username or password are required");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+
+
+<p class="extra">Extra! Check the current population of any country!</p>
+<form id="countryForm">
+    <input type="text" id="countryName" placeholder="Enter Country Name">
+    <button type="submit">Get Population</button>
+</form>
+<div id="countryInfo"></div>
+<script>
+    document.getElementById('countryForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting in the traditional way
+
+        const countryName = document.getElementById('countryName').value.trim();
+        fetch(`https://restcountries.com/v3.1/name/${countryName}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Country not found: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const population = data[0].population;
+                document.getElementById('countryInfo').textContent = 
+                    `Population of ${countryName}: ${population}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('countryInfo').textContent = 'Error: ' + error.message;
+            });
+    });
+</script>
+
+    </body>
+</html>
